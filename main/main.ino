@@ -52,6 +52,9 @@
 static const uint16_t screenWidth  = 480;
 static const uint16_t screenHeight = 320;
 
+extern uint16_t count;
+extern uint16_t preCount;
+
 #if LVGL_PORT_AVOID_TEAR
     #error "This example does not support the avoid tearing function. Please use `LVGL_PORT_ROTATION_DEGREE` for rotation"
 #endif
@@ -73,6 +76,7 @@ void setup()
     Serial.println(title + " start");
 
     Serial.println("Initialize panel device");
+    Serial.println(String(count));
     ESP_Panel *panel = new ESP_Panel();
     panel->init();
 #if LVGL_PORT_AVOID_TEAR
@@ -109,6 +113,10 @@ void setup()
 
 void loop()
 {
-    Serial.println("IDLE loop");
-    delay(1000);
+//    Serial.println("IDLE loop");
+//    delay(1000);
+    if (count > preCount) {
+      preCount = count;
+      Serial.println(count);
+    }
 }

@@ -10,6 +10,8 @@
 extern "C" {
 #endif
 
+extern uint16_t count;
+extern uint16_t preCount;
 void funcClick(lv_event_t * e);
 
 #ifdef __cplusplus
