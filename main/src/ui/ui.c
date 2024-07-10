@@ -12,15 +12,9 @@
 // SCREEN: ui_Screen1
 void ui_Screen1_screen_init(void);
 lv_obj_t *ui_Screen1;
-void ui_event_BtnClickMe( lv_event_t * e);
-lv_obj_t *ui_BtnClickMe;
+void ui_event_btnClickMe( lv_event_t * e);
+lv_obj_t *ui_btnClickMe;
 lv_obj_t *ui_lblClickMe;
-lv_obj_t *ui_Switch1;
-lv_obj_t *ui_Slider1;
-lv_obj_t *ui_Spinbox1;
-lv_obj_t *ui_Dropdown1;
-lv_obj_t *ui_Colorwheel1;
-lv_obj_t *ui_Roller1;
 lv_obj_t *ui____initial_actions0;
 
 ///////////////////// TEST LVGL SETTINGS ////////////////////
@@ -34,10 +28,10 @@ lv_obj_t *ui____initial_actions0;
 ///////////////////// ANIMATIONS ////////////////////
 
 ///////////////////// FUNCTIONS ////////////////////
-void ui_event_BtnClickMe( lv_event_t * e) {
+void ui_event_btnClickMe( lv_event_t * e) {
     lv_event_code_t event_code = lv_event_get_code(e);lv_obj_t * target = lv_event_get_target(e);
 if ( event_code == LV_EVENT_CLICKED) {
-      clickButton( e );
+      funcClick( e );
 }
 }
 

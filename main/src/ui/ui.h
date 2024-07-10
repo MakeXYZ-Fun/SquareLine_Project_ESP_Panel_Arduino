@@ -28,15 +28,9 @@ extern "C" {
 // SCREEN: ui_Screen1
 void ui_Screen1_screen_init(void);
 extern lv_obj_t *ui_Screen1;
-void ui_event_BtnClickMe( lv_event_t * e);
-extern lv_obj_t *ui_BtnClickMe;
+void ui_event_btnClickMe( lv_event_t * e);
+extern lv_obj_t *ui_btnClickMe;
 extern lv_obj_t *ui_lblClickMe;
-extern lv_obj_t *ui_Switch1;
-extern lv_obj_t *ui_Slider1;
-extern lv_obj_t *ui_Spinbox1;
-extern lv_obj_t *ui_Dropdown1;
-extern lv_obj_t *ui_Colorwheel1;
-extern lv_obj_t *ui_Roller1;
 extern lv_obj_t *ui____initial_actions0;
 
 

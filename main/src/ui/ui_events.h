@@ -10,7 +10,7 @@
 extern "C" {
 #endif
 
-void clickButton(lv_event_t * e);
+void funcClick(lv_event_t * e);
 
 #ifdef __cplusplus
 } /*extern "C"*/

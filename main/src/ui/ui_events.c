@@ -5,7 +5,7 @@
 
 #include "ui.h"
 
-void clickButton(lv_event_t * e)
+void funcClick(lv_event_t * e)
 {
 	// Your code here
 }

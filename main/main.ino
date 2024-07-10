@@ -48,11 +48,15 @@
 #include "lvgl_port_v8.h"
 #include "src/ui/ui.h"
 
+/*Change to your screen resolution*/
+static const uint16_t screenWidth  = 480;
+static const uint16_t screenHeight = 320;
+
 #if LVGL_PORT_AVOID_TEAR
     #error "This example does not support the avoid tearing function. Please use `LVGL_PORT_ROTATION_DEGREE` for rotation"
 #endif
 
-static lv_disp_rot_t rotation = LV_DISP_ROT_270;
+static lv_disp_rot_t rotation = LV_DISP_ROT_NONE;
 
 static void rotateDisplay(lv_disp_t *disp, lv_disp_rot_t rotation)
 {
@@ -83,6 +87,11 @@ void setup()
     lvgl_port_init(panel->getLcd(), panel->getTouch());
     
     /* Rotate display */
+    if (screenWidth < screenHeight) {
+      rotation = LV_DISP_ROT_NONE;
+    } else {
+      rotation = LV_DISP_ROT_270;
+    }
     rotateDisplay(lv_disp_get_default(), rotation);
 
     Serial.println("Create UI");
