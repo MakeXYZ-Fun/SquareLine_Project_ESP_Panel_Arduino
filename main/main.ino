@@ -52,8 +52,6 @@
 static const uint16_t screenWidth  = 480;
 static const uint16_t screenHeight = 320;
 
-<<<<<<< Updated upstream
-=======
 //extern uint16_t count;
 //extern uint16_t preCount;
 
@@ -76,7 +74,6 @@ static char textBuf[6];
 static uint32_t currentSongDuration = 0;
 static uint32_t currentTimeProgress = 0;
 
->>>>>>> Stashed changes
 #if LVGL_PORT_AVOID_TEAR
     #error "This example does not support the avoid tearing function. Please use `LVGL_PORT_ROTATION_DEGREE` for rotation"
 #endif
@@ -106,7 +103,7 @@ void audioSetup()
    * xCoreID: ID của lõi mà tác vụ sẽ được gán. ESP32 có hai lõi, được đánh số là 0 và 1.
    * 
    */
-    xTaskCreatePinnedToCore(Task_Audio, "Task_Audio", 10240, NULL, 10, NULL, 1); 
+    // xTaskCreatePinnedToCore(Task_Audio, "Task_Audio", 10240, NULL, 3, NULL, 1); 
     audio.setPinout(I2S_BCLK, I2S_LRCK, I2S_DOUT);
     audio.setVolume(20);
 }
@@ -155,20 +152,20 @@ void setup()
     /* Release the mutex */
     lvgl_port_unlock();
 
-    //audioSetup();
+    audioSetup();
 
-    //audio.connecttoFS(SPIFFS, "/mixkit-game-click.wav"); // SPIFFS
+    audio.connecttoFS(SPIFFS, "/mixkit-game-click.wav"); // SPIFFS
 
     Serial.println(title + " end");
 }
 
 void loop()
 {
-<<<<<<< Updated upstream
-    Serial.println("IDLE loop");
-    delay(1000);
-=======
-  delay(10);
+  if (isPlaying)
+  {
+    audio.loop();
+  }
+  delay(4);
 //    Serial.println("IDLE loop");
 //    delay(1000);
 //    if (count > preCount) {
@@ -202,12 +199,13 @@ void Task_Audio(void *pvParameters) // This is a task.
     if (isPlaying)
     {
       audio.loop();
-      if(Serial.available()){ // put streamURL in serial monitor
-          audio.stopSong();
-          String r=Serial.readString(); r.trim();
-          if(r.length()>5) audio.connecttohost(r.c_str());
-          log_i("free heap=%i", ESP.getFreeHeap());
-      }
+//      if(Serial.available()){ // put streamURL in serial monitor
+//          audio.stopSong();
+//          String r=Serial.readString(); r.trim();
+//          if(r.length()>5) audio.connecttohost(r.c_str());
+//          log_i("free heap=%i", ESP.getFreeHeap());
+//      }
+      
 //      if (currentSongDuration == 0)
 //      {
 //        currentSongDuration = audio.getAudioFileDuration();
@@ -239,5 +237,4 @@ void Task_Audio(void *pvParameters) // This is a task.
     }
     delay(1);
   }
->>>>>>> Stashed changes
 }
